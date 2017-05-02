@@ -1,0 +1,36 @@
+<!--JSON-->
+"family":
+{
+    "husband":"Michael",
+    "wife":"Ashley",
+    "age":33,
+    "kids":[
+        { "name":"Grant", "age":6 },
+        { "name":"Remi", "age":4 },
+        { "name":"Sawyer", "age":2 },
+        { "name":"Hyrum", "age":"0" },
+        { "name":"Spencer", "age":0 }
+    ]
+}
+<!--XML-->
+<family>
+    <husband>Michael</husband> 
+    <wife>Ashley</wife>
+    <kids>
+        <kid>
+            <name>Grant</name><age>6</age>
+        </kid> 
+        <kid>
+            <name>Remi</name><age>4</age>
+        </kid>
+        <kid>
+            <name>Sawyer</name><age>2</age>
+        </kid>
+        <kid>
+            <name>Hyrum</name><age>0</age>
+        </kid>
+        <kid>
+            <name>Spencer</name><age>0</age>
+        </kid>
+    </kids>
+</family>

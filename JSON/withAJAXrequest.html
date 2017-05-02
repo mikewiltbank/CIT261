@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>JSON Parse and Stringify</h1>
+
+Family Name: <input type="text" id="familyName" placeholder="lastname.txt"></input><br>
+<button onclick="validateForm()">Submit</button>
+
+<!-- Display Family Info -->
+<h2></h2>
+<h3><span id="husband"></span><span id="marriage"></span><span id="wife"></span></h3>
+<p id="children"></p>
+
+<script>
+// ensure there is a valid file requested
+function validateForm() {
+    var name = document.getElementById("familyName").value;
+    if (name == "Wiltbank.txt" || name == "Tenney.txt") {
+    	// call AJAX reauest function
+     	ajaxRequest();  
+    }
+    else
+    	// prompt user to use actual names on file
+    	alert("Family Name not on file, try Wiltbank.txt or Tenney.txt");
+}
+
+// use an AJAX request to get the content of a file
+function ajaxRequest() {
+	var x = "";
+	var file = document.getElementById("familyName").value;
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange = function() {
+	    if (this.readyState == 4 && this.status == 200) {
+	        // parse a JSON formatted file into a JavaScript object
+	        var newObject = JSON.parse(this.responseText);
+	        // loop through the array found within the new object and assign it to 'x'
+	    	for (i in newObject.kids) {
+			    x += "<strong>" + newObject.kids[i].name + ": </strong>";
+			    x += newObject.kids[i].age + "<br>";
+			}
+			// assign object variables to html
+			document.getElementById("husband").innerHTML = newObject.husband;
+			document.getElementById("marriage").innerHTML = " and "
+			document.getElementById("wife").innerHTML = newObject.wife;
+	        document.getElementById("children").innerHTML = x;
+
+	        // now stringify the object so that it can also be displayed
+	        var jsonString = JSON.stringify(newObject);
+	        document.getElementById("stringified").innerHTML = jsonString;
+	        document.getElementById("description").innerHTML = "JavaScript object strigified:";
+	    }
+	};
+	xmlhttp.open("GET", file, true);
+	xmlhttp.send();
+}
+
+</script>
+
+<p id="description"></p>
+<p id="stringified"></p>
+
+</body>
+</html>

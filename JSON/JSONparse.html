@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JSON -> Parse and Stringify</h2>
+
+<p id="parse"></p>
+<p id="stringify"></p>
+
+<script>
+
+//create a json formated string
+var text = '{ "name":"Michael", "birth":"1983-05-03", "city":"Eagar", "state":"Arizona"}';
+var obj = JSON.parse(text);
+// JSON cannot be a date, function, or undifined
+obj.birth = new Date(obj.birth);
+
+// could just use our text variable but here we can stringify
+var jsonString = JSON.stringify(obj);
+
+document.getElementById("parse").innerHTML = obj.name + " was born in " + obj.city + ", " + obj.state; 
+document.getElementById("stringify").innerHTML = jsonString;
+
+</script>
+
+</body>
+</html>
