@@ -1,0 +1,10 @@
+{
+    "husband":"Rhett",
+    "age":37,
+    "wife":"Sandee",
+    "kids":[
+        { "name":"Josie", "age":14 },
+        { "name":"Sophie", "age":12 },
+        { "name":"Sam", "age":10 }
+    ]
+}
