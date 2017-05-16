@@ -5,41 +5,70 @@
 div {
     width: 100px;
     height: 100px;
-    background: red;
-    -webkit-transition: width 2s; /* Safari */
-    transition: width 2s;
+    border-radius: 0%;
+    text-align: center;
+    margin: auto;
+    background: grey;
+    -webkit-transition: all 1s ease-in-out; /* Safari */
+    transition: all 1s ease-in-out;
 }
 
-/* For Safari 3.1 to 6.0 */
-#div1 {-webkit-transition-timing-function: linear;}
-#div2 {-webkit-transition-timing-function: ease;}
-#div3 {-webkit-transition-timing-function: ease-in;}
-#div4 {-webkit-transition-timing-function: ease-out;}
-#div5 {-webkit-transition-timing-function: ease-in-out;}
+/* 
 
-/* Standard syntax */
-#div1 {transition-timing-function: linear;}
-#div2 {transition-timing-function: ease;}
-#div3 {transition-timing-function: ease-in;}
-#div4 {transition-timing-function: ease-out;}
-#div5 {transition-timing-function: ease-in-out;}
+The transition-timing-function property specifies the speed curve of the transition effect.
+
+The transition-timing-function property can have the following values:
+
+ease - specifies a transition effect with a slow start, then fast, then end slowly (this is default)
+linear - specifies a transition effect with the same speed from start to end
+ease-in - specifies a transition effect with a slow start
+ease-out - specifies a transition effect with a slow end
+ease-in-out - specifies a transition effect with a slow start and end
+cubic-bezier(n,n,n,n) - lets you define your own values in a cubic-bezier function
+
+*/
+
+#border:hover {
+	box-shadow: inset 0 0 0 10px black;
+}
+#shape:hover {
+	border-radius: 50%;
+}
+#width:hover {
+	width:500px;
+}
+#color:hover {
+	background: blue;
+}
+#rotate:hover {
+	-webkit-transform: rotateZ(-360deg);  /* Safari */
+    transform: rotateZ(-360deg);
+}
+#shrink:hover {
+	-webkit-transform: scale(0.5);  /* Safari */
+    transform: scale(0.5);
+}
+#grow:hover {
+	-webkit-transform: scale(2.0);  /* Safari */
+    transform: scale(2.0);
+}
+
 
 div:hover {
-    width: 300px;
+
 }
 </style>
+
 </head>
 <body>
 
-<p><b>Note:</b> This example does not work in Internet Explorer 9 and earlier versions.</p>
-
-<div id="div1">linear</div><br>
-<div id="div2">ease</div><br>
-<div id="div3">ease-in</div><br>
-<div id="div4">ease-out</div><br>
-<div id="div5">ease-in-out</div><br>
-
-<p>Hover over the div elements above, to see the different speed curves.</p>
+<div id="border">Border</div><br>
+<div id="shape">Square To Circle</div><br>
+<div id="width">Width</div><br>
+<div id="color">Background Color</div><br>
+<div id="rotate">Rotate</div><br>
+<div id="shrink">Shrink</div><br>
+<div id="grow">Grow</div><br>
 
 </body>
 </html>
