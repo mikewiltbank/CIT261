@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<style> 
+
+h3 {
+  text-align: center;
+}
+
+div {
+    width: 100px;
+    height: 100px;
+    border-radius: 0%;
+    text-align: center;
+    line-height: 97px;     /* to vertically center */
+    font-size: 25px;
+    margin: auto;          /* to center boxes */
+    background: #5eb6be;
+    color: white;
+    -webkit-transition: all 1s ease-in-out; /* Safari */
+    transition: all 1s ease-in-out;
+}
+
+/*
+timing-function...
+ease - slow start, then fast, then end slowly (this is default)
+linear - same speed from start to end
+ease-in - slow start
+ease-out - slow end
+ease-in-out - slow start and end
+cubic-bezier(n,n,n,n) - lets you define your own values
+*/
+
+#border:hover {
+	box-shadow: inset 0 0 0 10px black;
+	text-shadow: 2px 1px black;
+  -webkit-transform: rotateX(360deg);   /* Safari */
+  transform: rotateX(360deg); 
+	
+}
+#shape:hover {
+	border-radius: 50%;
+	font-size:40px;
+}
+
+#width:hover {
+	width:500px;
+	letter-spacing: 40px;
+}
+
+#color:hover {
+	background: darkgrey;
+	color: black;
+  -webkit-transform: skew(20deg,15deg); /* Safari */
+  transform: skew(20deg,15deg);
+}
+
+#rotate:hover {
+	-webkit-transform: rotateZ(-360deg);  /* Safari */
+  transform: rotateZ(-360deg);
+}
+
+#shrink:hover {
+	-webkit-transform: scale(0.5);        /* Safari */
+  transform: scale(0.5);
+}
+
+#click:active {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  -webkit-transform: rotateZ(-720deg);  /* Safari */
+  transform: rotateZ(-720deg); 
+}
+
+#form {
+    width: 400px;
+    height: 200px;
+    border-radius: 0%;
+    text-align: center;
+    line-height: 97px;     /* to vertically center */
+    font-size: 25px;
+    margin: auto;          /* to center boxes */
+    background: #5eb6be;
+    color: white;
+}
+
+#field {
+  width: 100px;
+  -webkit-transition: all 1.5s linear 0.3s; /* Safari */
+  transition: all 1.5s linear 0.3s;
+}
+
+#field:focus {
+  background: green;
+  width: 250px;
+}
+
+</style>
+</head>
+
+<body>
+
+<h3>Hover over to see transitions mixed with transforms</h3>
+
+<!-- objects to transform and transition -->
+<div id="border">Border</div><br>
+<div id="shape">Circle</div><br>
+<div id="width">Width</div><br>
+<div id="color">Color</div><br>
+<div id="rotate">Rotate</div><br>
+<div id="shrink">Shrink</div><br>
+
+<h3>Click and hold</h3>
+<div id="click">Combo</div><br>
+
+<form id="form">
+First name: <input id="field" type="text" name="firstname"><br>
+Last name: <input id="field" type="text" name="lastname">
+</form>
+
+</body>
+
+</html>

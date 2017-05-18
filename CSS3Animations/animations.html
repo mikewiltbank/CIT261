@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Race!</title>
+<style> 
+
+div {
+    width: 300px;
+    height: 50px;
+    border-radius: 0%;
+    text-align: center;
+    font-size: 40px;
+    position: relative;
+    margin: auto;          /* to center boxes */
+    color: white;
+}
+
+.light {
+    width: 170px;
+    height: 25px;
+    border-radius: 0%;
+    line-height: 97px;     /* to vertically center */
+    position: relative;
+    margin: auto;          /* to center boxes */
+    background: white;
+    animation: light 10s linear 0.0s 1 forwards;
+    -webkit-animation: light 10s linear 0.0s 1 forwards;
+}
+
+.racer1 {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    position: relative;
+    margin: auto;          /* to center boxes */
+    background: #5eb6be;
+    animation: route 10s ease-in 7.0s 3 forwards;
+    -webkit-animation: route 10s ease-in 7.0s 3 forwards;
+}
+
+.racer2 {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    position: relative;
+    margin: auto;          /* to center boxes */
+    background: #366D16;
+    animation: route 10s ease-in-out 7.2s 3 forwards;
+    -webkit-animation: route 10.1s ease-in-out 7.2s 3 forwards;
+}
+
+.racer3 {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    position: relative;
+    margin: auto;          /* to center boxes */
+    background: #DB6037;
+    animation: route 10s linear 7.4s 3 forwards;
+    -webkit-animation: route 10s linear 7.4s 3 forwards;
+}
+
+/* Safari */
+@-webkit-keyframes light {
+    0%   { width: 280px; background:#16526D; top:50px; height: 47px;}
+    30%  { border-radius: 5%; width:270px; background:#288BB8; top:47px;}
+    31%  { border-radius: 0%; width:280px; background:#CC203D; top:95px; }
+    50%  { border-radius: 5%; width:270px; background:#A4132B; top:95px;}
+    51%  { border-radius: 0%; width:190px; background:#FAF52B; top:147px; }
+    70%  { border-radius: 5%; width:180px; background:#D5D125; top:147px; }
+    71%  { border-radius: 0%; width:100px; background:#27D61B; top:197px; }
+    100% { border-radius: 5%; width:90px; background:#1EB014; top:197px; height:47px; }
+}
+
+/* Standard syntax */
+@keyframes light {
+    0%   { width: 280px; background:#16526D; top:50px; height: 47px;}
+    30%  { border-radius: 5%; width:270px; background:#288BB8; top:47px;}
+    31%  { border-radius: 0%; width:280px; background:#CC203D; top:95px; }
+    50%  { border-radius: 5%; width:270px; background:#A4132B; top:95px;}
+    51%  { border-radius: 0%; width:190px; background:#FAF52B; top:147px; }
+    70%  { border-radius: 5%; width:180px; background:#D5D125; top:147px; }
+    71%  { border-radius: 0%; width:100px; background:#27D61B; top:197px; }
+    100% { border-radius: 5%; width:90px; background:#1EB014; top:197px; height:47px; }
+}
+
+/* Safari */
+@-webkit-keyframes route {
+    0%   { left:0px; top:0px;}
+    10%  { left:100px; top:0px;}
+    20%  { left:300px; top:0px; }
+    25%  { left:350px; top:50px; }
+    35%  { left:350px; top:250px; }
+    40%  { left:300px; top:300px;}
+    70%  { left:-300px; top:300px;}
+    75% { left:-350px; top:250px;}
+    85% { left:-350px; top:50px;}
+    90% { left:-300px; top:0px;}
+    100% { left:-0px; top:0px;}
+}
+
+/* Standard syntax */
+@keyframes route {
+    0%   { left:0px; top:0px;}
+    10%  { left:100px; top:0px;}
+    20%  { left:300px; top:0px; }
+    25%  { left:350px; top:50px; }
+    35%  { left:350px; top:250px; }
+    40%  { left:300px; top:300px;}
+    70%  { left:-300px; top:300px;}
+    75% { left:-350px; top:250px;}
+    85% { left:-350px; top:50px;}
+    90% { left:-300px; top:0px;}
+    100% { left:-0px; top:0px;}
+}
+
+</style>
+</head>
+<body>
+<div class="light"></div>
+<div>Ready to Race?</div>
+<div>On Your Marks</div>
+<div>Get Set</div>
+<div>Go!</div>
+<div class="racer1"></div><br>
+<div class="racer2"></div><br>
+<div class="racer3"></div><br>
+
+</body>
+</html>
