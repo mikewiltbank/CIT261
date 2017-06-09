@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+/* Full-width inputs */
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+/* Set style for buttons */
+button {
+    background-color: #199ABE;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+/* effect for buttons */
+button:hover {
+    opacity: 0.8;
+}
+
+</style>
+<script>
+function createUser() {
+    if(typeof(Storage) !== "undefined") {
+        var usernumber;
+        var userName = document.getElementById("uname").value;
+        var userPass = document.getElementById("upass").value;
+        var userFood = document.getElementById("ufood").value;
+
+        if (sessionStorage.user) {
+            usernumber = Number(sessionStorage.user)+1;
+        }
+        else {
+            usernumber = 1;
+            document.getElementById("cleared").innerHTML = "";
+        }
+
+        sessionStorage.setItem("user", usernumber);
+        sessionStorage.setItem(usernumber+".name", userName);
+        sessionStorage.setItem(usernumber+".psw", userPass);
+        sessionStorage.setItem(usernumber+".food", userFood);
+
+        document.getElementById("usernumber").innerHTML = "User Number is " + sessionStorage.getItem("user");
+        document.getElementById("username").innerHTML = "Your Name is " + sessionStorage.getItem(usernumber+".name");
+        document.getElementById("password").innerHTML = "Your Password is " + sessionStorage.getItem(usernumber+".psw");
+        document.getElementById("food").innerHTML = "Your Favorite food is " + sessionStorage.getItem(usernumber+".food");
+    } else {
+        document.getElementById("result").innerHTML = "Web storage not supported by your browser.";
+    }
+}
+
+function showUsers() {
+    var text = "";
+    var text2 = "";
+    var i;
+    var len = sessionStorage.getItem("user");
+
+    for (i = 1; i <= len ; i++) {
+        text += sessionStorage.getItem(i+".name") + " your password is " + sessionStorage.getItem(i+".psw") + " your favorite food is " + sessionStorage.getItem(i+".food") + "<br>";
+    }
+
+    for (var x = 0, num = sessionStorage.length; x < num; x++) {
+        var key = sessionStorage.key(x);
+        var value = sessionStorage[key];
+        text2 += key + ": " + value + "<br>";
+    }
+    
+    document.getElementById("allUsers").innerHTML = text;
+}
+
+function clickCounter() {
+    if(typeof(Storage) !== "undefined") {
+        if (sessionStorage.clickcount) {
+            sessionStorage.clickcount = Number(sessionStorage.clickcount)+1;
+        } else {
+            sessionStorage.clickcount = 1;
+            document.getElementById("cleared").innerHTML = "";
+        }
+        document.getElementById("result").innerHTML = "You have clicked the button " + sessionStorage.clickcount + " time(s).";
+    } else {
+        document.getElementById("result").innerHTML = "Web storage not supported by your browser.";
+    }
+}
+
+function clearStorage() {
+    if(typeof(Storage) !== "undefined") {
+        sessionStorage.clear();
+
+        document.getElementById("cleared").innerHTML = "Your session storage is now cleared.";
+    }
+}
+
+</script>
+</head>
+<body>
+
+  <div class="container">
+    <label><b>Username</b></label>
+    <input type="text" placeholder="Enter Username" name="uname" id="uname" required>
+
+    <label><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" id="upass" required>
+
+    <label><b>Favorite Food</b></label>
+    <input type="text" placeholder="Enter Favorite Food" name="food" id="ufood" required>
+
+<button onclick="createUser()">Add User</button>
+
+
+<p><div id="usernumber"></div></p>
+<p><div id="username"></div></p>
+<p><div id="password"></div></p>
+<p><div id="food"></div></p>
+
+<button onclick="showUsers()">Show All Users</button>
+<p id="allUsers"></p>
+
+<p><button onclick="clickCounter()" type="button">Add One To A Session Storage Counter</button></p>
+<div id="result"></div>
+<p>Session Storage is Client Side storage. <br>
+If you close the browser, and reopen it, you will find the information you enterred is no longer here.</p>
+<p>And you can delete it here...</p>
+<p><button onclick="clearStorage()" type="button">Delete Session Storage</button></p>
+<div id="cleared"></div>
+</body>
+</html>

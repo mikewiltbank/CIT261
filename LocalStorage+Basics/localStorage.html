@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+/* Full-width inputs */
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+/* Set style for buttons */
+button {
+    background-color: #199ABE;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+/* effect for buttons */
+button:hover {
+    opacity: 0.8;
+}
+</style>
+
+<script>
+function createUser() {
+    if(typeof(Storage) !== "undefined") {
+        var usernumber;
+        var userName = document.getElementById("uname").value;
+        var userPass = document.getElementById("upass").value;
+        var userFood = document.getElementById("ufood").value;
+
+        if (localStorage.user) {
+            usernumber = Number(localStorage.user)+1;
+        }
+        else {
+            usernumber = 1;
+            document.getElementById("cleared").innerHTML = "";
+        }
+
+        localStorage.setItem("user", usernumber);
+        localStorage.setItem(usernumber+".name", userName);
+        localStorage.setItem(usernumber+".psw", userPass);
+        localStorage.setItem(usernumber+".food", userFood);
+
+        document.getElementById("usernumber").innerHTML = "User Number is " + localStorage.getItem("user");
+        document.getElementById("username").innerHTML = "Your Name is " + localStorage.getItem(usernumber+".name");
+        document.getElementById("password").innerHTML = "Your Password is " + localStorage.getItem(usernumber+".psw");
+        document.getElementById("food").innerHTML = "Your Favorite food is " + localStorage.getItem(usernumber+".food");
+    } else {
+        document.getElementById("result").innerHTML = "Web storage not supported by your browser.";
+    }
+}
+
+function showUsers() {
+    var text = "";
+    var text2 = "";
+    var text3 = "";
+    var i;
+    var len = localStorage.getItem("user");
+
+    for (i = 1; i <= len ; i++) {
+        text += localStorage.getItem(i+".name") + " your password is " + localStorage.getItem(i+".psw") + " your favorite food is " + localStorage.getItem(i+".food") + "<br>";
+    }
+
+    for (var x = 0, num = localStorage.length; x < num; x++) {
+        var key = localStorage.key(x);
+        var value = localStorage[key];
+        text2 += key + ": " + value + "<br>";
+    }
+
+    for ( var x in localStorage) {
+        text3 += localStorage[x] + "<br>";
+    }
+    
+    document.getElementById("allUsers").innerHTML = text;
+
+    // now stringify the object so that it can also be displayed
+    /*
+    var keyObject = localStorage;//key(1);
+    var jsonString = JSON.stringify(keyObject);
+    document.getElementById("stringified").innerHTML = jsonString;
+    document.getElementById("description").innerHTML = "localStorage object strigified:";
+    */
+}
+
+function clickCounter() {
+    if(typeof(Storage) !== "undefined") {
+        if (localStorage.clickcount) {
+            localStorage.clickcount = Number(localStorage.clickcount)+1;
+        } else {
+            localStorage.clickcount = 1;
+            document.getElementById("cleared").innerHTML = "";
+        }
+        document.getElementById("result").innerHTML = "You have clicked the button " + localStorage.clickcount + " time(s).";
+    } else {
+        document.getElementById("result").innerHTML = "Web storage not supported by your browser.";
+    }
+}
+
+function clearStorage() {
+    if(typeof(Storage) !== "undefined") {
+        localStorage.clear();
+
+        document.getElementById("cleared").innerHTML = "Your local storage is now cleared.";
+    } else {
+        document.getElementById("result").innerHTML = "Web storage not supported by your browser.";
+    }
+}
+
+</script>
+</head>
+<body>
+
+  <div class="container">
+    <label><b>Username</b></label>
+    <input type="text" placeholder="Enter Username" name="uname" id="uname" required>
+
+    <label><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" id="upass" required>
+
+    <label><b>Favorite Food</b></label>
+    <input type="text" placeholder="Enter Favorite Food" name="food" id="ufood" required>
+
+<button onclick="createUser()">Add User</button>
+
+<p><div id="usernumber"></div></p>
+<p><div id="username"></div></p>
+<p><div id="password"></div></p>
+<p><div id="food"></div></p>
+
+<button onclick="showUsers()">Show All Users</button>
+<p id="allUsers"></p>
+<p id="description"></p>
+<p id="stringified"></p>
+
+<p><button onclick="clickCounter()" type="button">Add One To A Local Storage Counter</button></p>
+<div id="result"></div>
+<p>Local Storage is Client Side storage. <br>
+If you close the browser, and reopen it, you will find the information you enterred is still here.</p>
+<p>Unless you delete it here...</p>
+<p><button onclick="clearStorage()" type="button">Delete Local Storage</button></p>
+<div id="cleared"></div>
+</body>
+</html>
