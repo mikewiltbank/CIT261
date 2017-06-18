@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<style> 
+
+h3 {
+  text-align: center;
+}
+
+div {
+  width: 100px;
+  height: 100px;
+  border-radius: 0%;
+  text-align: center;
+  line-height: 97px;     /* to vertically center */
+  font-size: 25px;
+  margin: auto;          /* to center boxes */
+  background: #5eb6be;
+  color: white;
+  -webkit-transition: all 1s ease-in-out; /* Safari */
+  transition: all 1s ease-in-out;
+}
+
+/* Set style for buttons */
+button {
+    background-color: #199ABE;
+    color: white;
+    padding: 14px 20px;
+    display: block;
+    margin: 0 auto;
+    border: none;
+    cursor: pointer;
+    width: 50%;
+}
+
+/* effect for buttons */
+button:hover {
+    opacity: 0.8;
+}
+
+/*
+timing-function...
+ease - slow start, then fast, then end slowly (this is default)
+linear - same speed from start to end
+ease-in - slow start
+ease-out - slow end
+ease-in-out - slow start and end
+cubic-bezier(n,n,n,n) - lets you define your own values
+*/
+
+
+#form {
+    width: 400px;
+    height: 200px;
+    border-radius: 0%;
+    text-align: center;
+    line-height: 97px;     /* to vertically center */
+    font-size: 25px;
+    margin: auto;          /* to center boxes */
+    background: #5eb6be;
+    color: white;
+}
+
+
+</style>
+
+</head>
+
+<body>
+
+<h3>Hover over to see transitions mixed with transforms</h3>
+
+<!-- objects to transform and transition -->
+<div id="shape">Circle</div><br>
+<div id="width">Width</div><br>
+<button onclick="changeWidth()">Click to Change Width</button><br>
+<button id="circleBtn">Click to Change Width Back</button><br>
+
+
+<form id="form">
+First name: <input id="field" type="text" name="firstname"><br>
+Last name: <input id="field2" type="text" name="lastname">
+</form>
+
+<script>
+
+document.getElementById("shape").onmouseover = circle;
+document.getElementById("shape").onmouseout = square;
+document.getElementById("circleBtn").onclick = changeWidthBack;
+document.getElementById("form").onkeydown = changeBackground;
+
+
+function changeBorder() {
+  document.getElementById("border").style.width = "500px";
+}
+
+function circle() {
+  document.getElementById("shape").style.borderRadius = "50%";
+}
+
+function square() {
+  document.getElementById("shape").style.borderRadius = "0%";
+}
+
+function changeWidth() {
+  document.getElementById("width").style.width = "500px";
+  document.getElementById("width").style.letterSpacing = "40px";
+}
+
+function changeWidthBack() {
+  document.getElementById("width").style.width = "100px";
+  document.getElementById("width").style.letterSpacing = "0px";
+}
+
+function changeBackground() {
+  document.getElementById("form").style.background = "green";
+  document.getElementById("field").style.background = "red";
+  document.getElementById("field2").style.background = "blue";
+}
+
+</script>
+
+</body>
+
+</html>
