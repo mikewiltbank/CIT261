@@ -1,0 +1,133 @@
+<!DOCTYPE html> 
+<html> 
+<head>
+  <title>Dom Manipulation</title>
+  <style>
+    h1 {
+      text-align: center;
+      background-color: yellow;
+      color: darkgrey;
+    }
+    p {
+      background-color: white;
+      color: black;
+    }
+    ul {
+      background-color: white;
+    }
+    li {
+      background-color: white;
+    }
+    div {
+      text-align: center;
+      background-color: white;
+    }
+  </style>
+</head>
+<body id="body"> 
+  <h1>Playing with the DOM</h1>
+  <p>
+    Every page has a number of nodes that make up the DOM<br>
+    The body is the main parent node, and generally has children.<br>
+    User buttons to highlight through the main body children.<br>
+  </p>
+  <button id="younger">Younger Child</button>
+  <button id="older">Older Child</button> 
+  <h2>Children of Children</h2>
+  <p>
+    A full list would be one child node of the body.<br>
+    Each list item is a child node of the list.<br>
+    Any of those list items can also have children.<br>
+  </p>
+  <ul id="parentList">
+    <li>1st child of list</li>
+    <li>Parent to new list
+      <ul id="childList">
+        <li>1st child of new list</li>
+        <li>2nd child of new list</li>
+        <li>and so on...</li>
+      </ul>
+    </li>
+    <li>last child of original list</li>
+  </ul>
+  Append Text: <input type="text" id="listItem" value="New Item"><br>
+  <button id="appendParent" data-id="parentList">Append Parent List</button>
+  <button id="appendChild" data-id="childList">Append Child List</button><br>
+  <button id="deleteParent" data-id="parentList">Delete Parent List Item</button>
+  <button id="deleteChild" data-id="childList">Delete Child List Item</button><br>
+  <p>
+    You can also index through each tag item like an array.<br>
+    Enter in a tag name with an index number to post it below
+  </p>
+  Tag Name: <input type="text" id="tag" value="p"><br>
+  Index Number<input type="number" id="index" value="0"><br>
+  <button onclick="domTags()">Display Tag Contents</button>
+  <div id="display"></div>
+
+<script> 
+  var younger = document.getElementById("younger");
+  var older = document.getElementById("older");
+  var node = document.body.children;
+  // counter to traverse the dom
+  var i = 0;
+
+  younger.addEventListener("click", youngerChild);
+  older.addEventListener("click", olderChild);
+
+  function youngerChild() {
+    if (node[i + 1].nodeName != "SCRIPT")
+    {
+      i++
+      document.getElementById("display").innerHTML = "Node Name: " + node[i].nodeName;
+      node[i].style.backgroundColor = "yellow";
+      if (node[i].nodeName != "H1")
+        node[i - 1].style.backgroundColor = "white";
+    }
+  }
+
+  function olderChild() {
+    if (node[i].nodeName != "H1")
+    {
+      i--;
+      document.getElementById("display").innerHTML = "Node Name: " + node[i].nodeName;
+      node[i].style.backgroundColor = "yellow";
+      node[i + 1].style.backgroundColor = "white";
+    }
+  }
+
+  var parentAdd = document.getElementById("appendParent");
+  var childAdd = document.getElementById("appendChild");
+  var parentRemove = document. getElementById("deleteParent");
+  var childRemove = document.getElementById("deleteChild");
+  parentAdd.addEventListener("click", append);
+  childAdd.addEventListener("click", append);
+  parentRemove.addEventListener("click", remove);
+  childRemove.addEventListener("click", remove);
+
+  function append() {
+    var listItem = document.getElementById("listItem").value;
+    var listId = this.attributes["data-id"].value;
+    var newItem = document.createElement("LI");
+    var textnode = document.createTextNode(listItem);
+    newItem.appendChild(textnode);
+
+    var list = document.getElementById(listId);
+    list.insertBefore(newItem, list.lastChild);
+  }
+
+  function remove() {
+    var listId = this.attributes["data-id"].value;
+    var list = document.getElementById(listId);
+    if (list.hasChildNodes())
+      list.removeChild(list.lastElementChild);  
+  }
+
+  function domTags() {
+    var tag = document.getElementById("tag").value;
+    var index = document.getElementById("index").value;
+    var x = document.getElementsByTagName(tag);
+    document.getElementById("display").innerHTML = x[index].innerHTML;
+  }
+</script> 
+</body> 
+</html>

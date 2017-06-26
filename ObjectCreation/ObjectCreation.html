@@ -1,0 +1,73 @@
+<!DOCTYPE html> 
+<html> 
+<head>
+  <title>Object Creation</title>
+  <style>
+    h1 {
+      text-align: center;
+      color: darkgrey;
+    }
+    p {
+      text-align: center;
+    }
+    button {
+      display: block;
+      margin: auto;
+    }
+    div {
+      text-align: center;
+    }
+  </style>
+</head>
+<body id="body"> 
+  <h1>Object Creation</h1>
+  <p>Here are some examples of creating objects and then displaying them.</p>
+  <div id="display"></div><br>
+  <button onclick="showFamily()">Show Family Objects</button><br>
+  <div id="display2"></div>
+
+  <script>
+    function Family(father, wife, est) {
+      this.fatherName = father;
+      this.wifeName = wife;
+      this.established = est;
+      this.years = function() {return 2017 - this.established;};
+    }
+
+    var wiltbank = new Family("Michael", "Ashley", 2006);
+    var tenney = new Family("Rhett", "Sandee", 2002);
+    var Crosby = new Family("Matt", "Lisa", 2006);
+
+    // another exapmle of object creation
+    var finch = {fatherName:"Lance", wifeName:"Shay", established:2010};
+
+    document.getElementById("display").innerHTML = wiltbank.fatherName + " and " + wiltbank.wifeName + " started a family in " + wiltbank.established; 
+
+    function showFamily() {
+      var text = "";
+      for (var x in wiltbank) {
+        text += wiltbank[x] + "<br>";
+      }
+      text += "<br>";
+
+      for (var x in tenney) {
+        text += tenney[x] + "<br>";
+      }
+      text += "<br>";
+
+      for (var x in Crosby) {
+        text += Crosby[x] + "<br>";
+      }
+      text += "<br>";
+
+      for (var x in finch) {
+        text += finch[x] + "<br>";
+      }
+
+      // display the results
+      document.getElementById("display2").innerHTML = text;
+    }
+
+  </script> 
+</body> 
+</html>

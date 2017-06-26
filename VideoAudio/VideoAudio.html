@@ -4,7 +4,7 @@
 
 <div style="text-align:center"> 
 
-  <video id="video" width="300" controls>
+  <video id="video" width="300">
     <source src="GrantBirthday.mp4" type="video/mp4">
     <track src="subtitles_en.vtt" kind="subtitles" srclang="en" label="English">
     Your browser does not support HTML5 video.
@@ -32,69 +32,69 @@
 </div> 
 
 <script> 
-var grantVideo = document.getElementById("video"); 
+  var grantVideo = document.getElementById("video"); 
 
-function playPause() { 
-    if (grantVideo.paused) 
-        grantVideo.play(); 
-    else 
-        grantVideo.pause(); 
-} 
+  function playPause() { 
+      if (grantVideo.paused) 
+          grantVideo.play(); 
+      else 
+          grantVideo.pause(); 
+  } 
 
-function bigSmall() {
-	if (grantVideo.width === 300)
-		grantVideo.width = 500;
-	else
-		grantVideo.width = 300;
-}
-
-var grantAudio = document.getElementById("audio");
-
-function playAudio() {
-	if (grantAudio.paused) 
-        grantAudio.play(); 
-    else 
-        grantAudio.pause();
-}
-
-function canvasDraw() {
-  var canvas = document.getElementById('blankCanvas');
-  if (canvas.getContext) {
-     var ctx = canvas.getContext('2d');
-
-    ctx.beginPath();
-    ctx.arc(75, 75, 50, 0, Math.PI * 2, true); // Outer circle
-    ctx.moveTo(110, 75);
-    ctx.arc(75, 75, 35, 0, Math.PI, false);    // Mouth (clockwise)
-    ctx.moveTo(65, 65);
-    ctx.arc(60, 65, 5, 0, Math.PI * 2, true);  // Left eye
-    ctx.moveTo(95, 65);
-    ctx.arc(90, 65, 5, 0, Math.PI * 2, true);  // Right eye
-    ctx.stroke();
+  function bigSmall() {
+  	if (grantVideo.width === 300)
+  		grantVideo.width = 500;
+  	else
+  		grantVideo.width = 300;
   }
-}
 
-function canvasGradient() {
-	var c = document.getElementById("blankCanvas");
-	var ctx = c.getContext("2d");
+  var grantAudio = document.getElementById("audio");
 
-	// Create gradient
-	var grd = ctx.createRadialGradient(70,70,5,90,70,100);
-	grd.addColorStop(0,"blue");
-	grd.addColorStop(1,"white");
+  function playAudio() {
+  	if (grantAudio.paused) 
+          grantAudio.play(); 
+      else 
+          grantAudio.pause();
+  }
 
-	// Fill with gradient
-	ctx.fillStyle = grd;
-	ctx.fillRect(10,10,130,130);
-}
+  function canvasDraw() {
+    var canvas = document.getElementById('blankCanvas');
+    if (canvas.getContext) {
+       var ctx = canvas.getContext('2d');
 
-function canvasImage() {
-	var c = document.getElementById("blankCanvas");
-    var ctx = c.getContext("2d");
-    var img = new Image();
-    img.src = 'Remi3.JPG';
-    ctx.drawImage(img,10,10);
-}
+      ctx.beginPath();
+      ctx.arc(75, 75, 50, 0, Math.PI * 2, true); // Outer circle
+      ctx.moveTo(110, 75);
+      ctx.arc(75, 75, 35, 0, Math.PI, false);    // Mouth (clockwise)
+      ctx.moveTo(65, 65);
+      ctx.arc(60, 65, 5, 0, Math.PI * 2, true);  // Left eye
+      ctx.moveTo(95, 65);
+      ctx.arc(90, 65, 5, 0, Math.PI * 2, true);  // Right eye
+      ctx.stroke();
+    }
+  }
+
+  function canvasGradient() {
+  	var c = document.getElementById("blankCanvas");
+  	var ctx = c.getContext("2d");
+
+  	// Create gradient
+  	var grd = ctx.createRadialGradient(70,70,5,90,70,100);
+  	grd.addColorStop(0,"blue");
+  	grd.addColorStop(1,"white");
+
+  	// Fill with gradient
+  	ctx.fillStyle = grd;
+  	ctx.fillRect(10,10,130,130);
+  }
+
+  function canvasImage() {
+  	var c = document.getElementById("blankCanvas");
+      var ctx = c.getContext("2d");
+      var img = new Image();
+      img.src = 'Remi3.JPG';
+      ctx.drawImage(img,10,10);
+  }
 
 </script> 
 
