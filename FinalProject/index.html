@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: lightgrey;
+}
+
+.menu li {
+    float: left;
+}
+
+.menu li a {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.menu li a:hover {
+    background-color: #00ced1;
+}
+#week1 {
+  overflow: hidden;
+  /*visibility: hidden;
+  opacity: 0;
+  top:-300;*/
+  background-color: #ddd;
+  height: 0px;
+  -webkit-transition: height 0.5s ease-in-out; /* Safari */
+  transition: height 0.5s ease-in-out;
+}
+#week2 {
+  overflow: hidden;
+  background-color: #ddd;
+  height: 0px;
+  -webkit-transition: height 0.5s ease-in-out; /* Safari */
+  transition: height 0.5s ease-in-out;
+}
+#week3 {
+  overflow: hidden;
+  background-color: #ddd;
+  height: 0px;
+  -webkit-transition: height 0.5s ease-in-out; /* Safari */
+  transition: height 0.5s ease-in-out;
+}
+#week4 {
+  overflow: hidden;
+  background-color: #ddd;
+  height: 0px;
+  -webkit-transition: height 0.5s ease-in-out; /* Safari */
+  transition: height 0.5s ease-in-out;
+}
+
+.tabs{
+  vertical-align: top;
+  overflow: hidden;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tabs li{
+  float: left;
+  margin: 0 .5em 0 0;
+}
+
+.tabs a{
+  position: relative;
+  background: #ddd;
+  background-image: linear-gradient(to top, #fff, #ddd);
+  padding: .7em 3em;
+  float: left;
+  text-decoration: none;
+  color: #444;
+  text-shadow: 0 1px 0 rgba(255,255,255,.8);
+  border-radius: 0 0 0 10px;
+  box-shadow: 0 2px 2px rgba(0,0,0,.4);
+}
+
+.tabs a:hover,
+.tabs a:hover::after,
+.tabs a:focus,
+.tabs a:focus::after{
+  background: #00ced1;
+  color: white;
+}
+
+.tabs a:focus{
+  outline: 0;
+}
+
+.tabs a::after{
+  content:'';
+  position:absolute;
+  z-index: 1;
+  top: 0;
+  right: -.5em;
+  bottom: 0;
+  width: 1em;
+  background: #ddd;
+  background-image: linear-gradient(to top, #fff, #ddd);
+  box-shadow: 2px 2px 2px rgba(0,0,0,.4);
+  transform: skew(-20deg);
+  border-radius: 0 0 10px 0;
+}
+
+.tabs .current a,
+.tabs .current a::after{
+  background: green;
+  color: white;
+  z-index: 3;
+}
+
+.content
+{
+    background: #fff;
+    padding: 2em;
+    height: 220px;
+    position: relative;
+    z-index: 2;
+    border-radius: 0 5px 5px 5px;
+    box-shadow: 0 -2px 3px -2px rgba(0, 0, 0, .5);
+}
+
+/*-----------------*/
+
+</style>
+</head>
+<body>
+<div class="menu">
+  <ul>
+    <li><a class="active" href="#home">Home</a></li>
+    <li><a href="#news">Next Month</a></li>
+    <li><a href="#contact">Archive</a></li>
+    <li><a href="#about">About</a></li>
+  </ul>
+</div>
+<h1>Someday Goals</h1>
+<p>For this month weight loss...</p>
+<div id="week1">
+  <h2>Learning Time</h2>
+  <p>Some instructions here....</p>
+  <ul>
+    <li><a href="#home">Item 1</a></li>
+    <li><a href="#news">Item 2</a></li>
+    <li><a href="#contact">Item 3</a></li>
+    <li><a href="#about">Item 4</a></li>
+  </ul>
+</div>
+<div id="week2">
+  <h2>Goal Setting Time</h2>
+  <p>Some ideas here...</p>
+</div>
+<div id="week3">
+  <h2>Making Progress</h2>
+  <p>Some thoughts here...</p>
+</div>
+<div id="week4">
+  <h2>Wrap up</h2>
+  <p>Some stories here...</p>
+</div>
+<div class="tabs">
+  <ul>
+    <li><a href="#tabs-1" onclick="hideShow('week1')">Week 1</a></li>
+    <li><a href="#tabs-2" onclick="hideShow('week2')">Week 2</a></li>
+    <li><a href="#tabs-3" onclick="hideShow('week3')">Week 3</a></li>
+    <li><a href="#tabs-4" onclick="hideShow('week4')">Week 4</a></li>
+  </ul>
+</div>
+
+<script>
+//var tab1 = document.getElementById("tab1");
+//var tab2 = document.getElementById("tab2");
+//tab1.addEventListener("click", hideShow);
+//tab2.addEventListener("click", hideShow);
+
+
+function hideShow(divId) {
+  var clicked = document.getElementById(divId);
+  var w = document.getElementById('week1');
+  var x = document.getElementById('week2');
+  var y = document.getElementById('week3');
+  var z = document.getElementById('week4');
+  //var open = false;
+  if (clicked.style.height === '300px') {
+    clicked.style.height = '0px';
+    return;
+  } else if (w.style.height === '300px' || x.style.height === '300px' || y.style.height === '300px' || z.style.height === '300px') {
+    w.style.height = '0px';
+    x.style.height = '0px';
+    y.style.height = '0px';
+    z.style.height = '0px';
+    setTimeout(function(){clicked.style.height = '300px';}, 500);
+  } else {
+    clicked.style.height = '300px';
+  }
+}
+
+function hideShow2() {
+    var x = document.getElementById('week2');
+    if (x.style.height === '300px') {
+        x.style.height = '0px';
+    } else {
+        x.style.height = '300px';
+    }
+}
+
+function hideShow3() {
+    var x = document.getElementById('week2');
+    if (x.style.display === 'block') {
+        x.style.display = 'none';
+    } else {
+        x.style.display = 'block';
+    }
+}
+/*
+$(document).ready(function()
+  {
+     $(".accordion").accordion({
+    autoHeight: false
+});
+$('.tabs').tabs();
+  });
+*/
+</script>
+</body>
+</html>
